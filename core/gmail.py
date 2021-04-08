@@ -76,7 +76,7 @@ def alert_async(func):
     @wraps(func)
     async def wrapper(*args, **kwargs):
         try:
-            result = await func(*args, **kwargs)
+            await func(*args, **kwargs)
         except Exception as error:
             message = gmail.create_message(error)
             gmail.send_gmail_to_myself(message)
